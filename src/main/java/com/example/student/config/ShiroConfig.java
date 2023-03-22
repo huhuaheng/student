@@ -35,27 +35,6 @@ public class ShiroConfig {
         return userRealm;
     }
 
-//    /**
-//     * 配置Shiro的Filter
-//     *
-//     * @return Filter
-//     */
-//    @Bean
-//    public FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean() {
-//        FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<>();
-//        DelegatingFilterProxy proxy = new DelegatingFilterProxy("shiroFilter");
-//        proxy.setTargetFilterLifecycle(true);
-//        filterRegistrationBean.setFilter(proxy);
-//        return filterRegistrationBean;
-//    }
-
-    @Bean
-    public SessionsSecurityManager securityManager(UserRealm userRealm) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(userRealm);
-        return securityManager;
-    }
-
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -80,6 +59,29 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
+
+//    /**
+//     * 配置Shiro的Filter
+//     *
+//     * @return Filter
+//     */
+//    @Bean
+//    public FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean() {
+//        FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<>();
+//        DelegatingFilterProxy proxy = new DelegatingFilterProxy("shiroFilter");
+//        proxy.setTargetFilterLifecycle(true);
+//        filterRegistrationBean.setFilter(proxy);
+//        return filterRegistrationBean;
+//    }
+
+    @Bean(name = "securityManager")
+    public DefaultWebSecurityManager securityManager(UserRealm userRealm) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(userRealm);
+        return securityManager;
+    }
+
+
 
 
 
