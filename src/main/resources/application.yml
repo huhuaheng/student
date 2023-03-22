@@ -1,0 +1,87 @@
+
+server:
+  port: 8080
+  tomcat:
+    accesslog:
+      buffered: true
+      directory: logs
+      enabled: false
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+spring:
+  #  profiles:
+  #    active: local
+  mvc:
+    static-path-pattern=/template/**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+    multipart:
+      max-request-size: 500MB
+      max-file-size: 500MB
+  servlet:
+    multipart:
+      max-request-size: 500MB
+      max-file-size: 500MB
+  jackson:
+    #date-format: yyyy-MM-dd HH:mm:ss
+    #time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.3.133:3306/studentdb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai&enabledTLSProtocols=TLSv1.2&useSSL=false
+      username: root
+      password: root
+      initial-size: 3
+      min-idle: 3
+      max-active: 20
+      max-wait: 30000
+      time-between-eviction-runs-millis: 30000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+    redis:
+      database: 6
+      host: 127.0.0.1
+      port: 6379
+      password:
+      # password: Inodes123456
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 8
+          min-idle: 0
+      timeout: 10000
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.student
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  global-config:
+#    field-strategy: 0
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
