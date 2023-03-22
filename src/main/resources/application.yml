@@ -41,9 +41,9 @@ spring:
     druid:
       filters: stat
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.3.133:3306/studentdb?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai&enabledTLSProtocols=TLSv1.2&useSSL=false
+      url: jdbc:mysql://containers-us-west-101.railway.app:6011/student?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai&enabledTLSProtocols=TLSv1.2&useSSL=false
       username: root
-      password: root
+      password: 6fEDSEevxlkFD5NoDwY4
       initial-size: 3
       min-idle: 3
       max-active: 20
@@ -59,9 +59,9 @@ spring:
 
     redis:
       database: 6
-      host: 127.0.0.1
-      port: 6379
-      password:
+      host: containers-us-west-62.railway.app
+      port: 7874
+      password: y82IOLcwlH8EN1CrO6Qz
       # password: Inodes123456
       lettuce:
         pool:
