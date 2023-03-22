@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.apache.shiro.mgt.SecurityManager;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 import java.util.LinkedHashMap;
@@ -36,6 +37,7 @@ public class ShiroConfig {
     }
 
     @Bean
+    @Lazy
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
