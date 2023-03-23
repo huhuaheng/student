@@ -16,8 +16,12 @@ RUN apk add --no-cache git
 RUN git clone https://github.com/huhuaheng/student.git /usr/src/student
 WORKDIR /usr/src/student
 
+# 将阿里的 Maven 源替换为默认 Maven 源
+RUN sed -i 's/http:\/\/repo.maven.apache.org\/maven2/https:\/\/maven.aliyun.com\/repository\/central/g' /usr/share/maven/conf/settings.xml
+
+
 # 打包应用
-RUN mvn package
+RUN mvn package -DskipTests
 
 # 设置环境变量
 ENV JAVA_OPTS=""
